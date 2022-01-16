@@ -1,6 +1,6 @@
 const EventEmitter = require("eventemitter3");
-const phin = require("phin");
 const BFDAPIError = require("./BFDAPIError");
+const phin = require("phin");
 
 class BFDAPI extends EventEmitter {
 	/**
@@ -403,14 +403,15 @@ class BFDAPI extends EventEmitter {
 		});
 	}
 
-	/**
-	 * post your bots server count stats automatically in an interval
-	 * @param {number} server_count - the number of servers your bot is in
-	 * @param {number} interval - the interval at which the server count should post, in minutes
-	 * @param {string} [id] - the id to post stats to, if different from the current id
-	 * @param {string} [auth] - different authorization to use, if needed
-	 * @returns {Promise<{ message: string, success: boolean }>}
+	/**	
+	 * post your bots server count stats automatically in an interval	
+	 * @param {number} server_count - the number of servers your bot is in	
+	 * @param {number} interval - the interval at which the server count should post, in minutes	
+	 * @param {string} [id] - the id to post stats to, if different from the current id	
+	 * @param {string} [auth] - different authorization to use, if needed	
+	 * @returns {Promise<{ message: string, success: boolean }>}	
 	 */
+
 	async autopostServerCount(server_count = 0, interval = 60, id = this.id, auth = this.token) {
 		setInterval(() => {
 			return phin({
@@ -465,7 +466,7 @@ class BFDAPI extends EventEmitter {
 				throw err;
 			})
 		}, interval * 60000);
-		return "Auto-post started!"
+		return "Auto-post started! "
 	}
 }
 
