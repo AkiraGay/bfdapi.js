@@ -413,7 +413,7 @@ class BFDAPI extends EventEmitter {
 	 */
 
 	async autopostServerCount(server_count = 0, interval = 60, id = this.id, auth = this.token) {
-		setInterval(() => {
+		await setInterval(() => {
 			return phin({
 				method: "POST",
 				url: `https://discords.com/bots/api/bot/${id}`,
@@ -457,16 +457,16 @@ class BFDAPI extends EventEmitter {
 							type: "unknown"
 						});
 				}
-
 				return {
 					message: p.body.message || "",
 					success: p.statusCode === 200,
+					type: "Autopost"
 				};
 			}).catch(err => {
 				throw err;
 			})
 		}, interval * 60000);
-		return "Auto-post started! "
+		return "Auto-post started!"
 	}
 }
 
